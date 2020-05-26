@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = null;
+}
+@using Models;
+@model List<Heroes>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Default</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div> 
+        <h2>英雄联盟道聚城</h2>
+        <a href="/Hero/Add" class="btn btn-link">新增</a>
+        <table class="table table-bordered">
+            <tr>
+                <th></th>
+                <th>编号</th>
+                <th>名字</th>
+                <th>Q币</th>
+                <th>微信</th>
+                <th>操作</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="~/Content/Images/@item.Photo" width="50" /></td>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Q_Coin</td>
+                    <td>@string.Format("{0:C}",item.Weixin)</td>
+                    <td>
+                        <a href="/Hero/EditHero/@item.Id" class="btn btn-link">编辑</a>
+                        <a href="/Hero/Delete/@item.Id" class="btn btn-link" onclick="return confirm('确定要删除它吗？')">删除</a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

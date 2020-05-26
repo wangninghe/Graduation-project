@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+@using Models;
+@model Heroes
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditHero</title>
+</head>
+<body>
+    <div>
+        <h2>编辑英雄</h2>
+        <form action="EditHero" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Id" value="@Model.Id"/>
+            <label>名称：</label>
+            <input type="text" name="Name" value="@Model.Name"/> <br />
+            <label>图片：</label>
+            <img src="~/Content/Images/@Model.Photo" width="50" />
+            <input type="file" name="cPhoto" /> <br />
+            <label>Q币：</label>
+            <input type="text" name="Q_Coin" value="@Model.Q_Coin"/> <br />
+            <label>微信：</label>
+            <input type="text" name="Weixin" value="@Model.Weixin"/> <br />
+            <input type="submit" value="提交" />
+        </form>
+    </div>
+</body>
+</html>

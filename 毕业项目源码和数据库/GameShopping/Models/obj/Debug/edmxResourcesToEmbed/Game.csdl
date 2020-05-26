@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GameShoppingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Heroes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Q_Coin" Type="Int32" Nullable="false" />
+    <Property Name="Weixin" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GameShoppingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Heroes" EntityType="Self.Heroes" />
+    <EntitySet Name="Type" EntityType="GameShoppingModel.Type" />
+    <AssociationSet Name="FK_Type_Type" Association="GameShoppingModel.FK_Type_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Type1" EntitySet="Type" />
+    </AssociationSet>
+    <EntitySet Name="Good" EntityType="GameShoppingModel.Good" />
+    <EntitySet Name="Order" EntityType="GameShoppingModel.Order" />
+    <EntitySet Name="OrderDetail" EntityType="GameShoppingModel.OrderDetail" />
+    <EntitySet Name="ShopCar" EntityType="GameShoppingModel.ShopCar" />
+    <AssociationSet Name="FK_Good_Type" Association="GameShoppingModel.FK_Good_Type">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Good" EntitySet="Good" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Good" Association="GameShoppingModel.FK_OrderDetail_Good">
+      <End Role="Good" EntitySet="Good" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopCar_Good" Association="GameShoppingModel.FK_ShopCar_Good">
+      <End Role="Good" EntitySet="Good" />
+      <End Role="ShopCar" EntitySet="ShopCar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="GameShoppingModel.FK_OrderDetail_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PID" Type="Int32" />
+    <NavigationProperty Name="Type1" Relationship="GameShoppingModel.FK_Type_Type" FromRole="Type" ToRole="Type1" />
+    <NavigationProperty Name="Type2" Relationship="GameShoppingModel.FK_Type_Type" FromRole="Type1" ToRole="Type" />
+    <NavigationProperty Name="Good" Relationship="GameShoppingModel.FK_Good_Type" FromRole="Type" ToRole="Good" />
+  </EntityType>
+  <Association Name="FK_Type_Type">
+    <End Type="GameShoppingModel.Type" Role="Type" Multiplicity="0..1" />
+    <End Type="GameShoppingModel.Type" Role="Type1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Type1">
+        <PropertyRef Name="PID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Good">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CostPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellingPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" />
+    <NavigationProperty Name="Type" Relationship="GameShoppingModel.FK_Good_Type" FromRole="Good" ToRole="Type" />
+    <NavigationProperty Name="OrderDetail" Relationship="GameShoppingModel.FK_OrderDetail_Good" FromRole="Good" ToRole="OrderDetail" />
+    <NavigationProperty Name="ShopCar" Relationship="GameShoppingModel.FK_ShopCar_Good" FromRole="Good" ToRole="ShopCar" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTime" Type="DateTime" Precision="0" />
+    <Property Name="TotalPrice" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="OrderDetail" Relationship="GameShoppingModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodID" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="Num" Type="Int32" />
+    <NavigationProperty Name="Good" Relationship="GameShoppingModel.FK_OrderDetail_Good" FromRole="OrderDetail" ToRole="Good" />
+    <NavigationProperty Name="Order" Relationship="GameShoppingModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="ShopCar">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodID" Type="Int32" />
+    <NavigationProperty Name="Good" Relationship="GameShoppingModel.FK_ShopCar_Good" FromRole="ShopCar" ToRole="Good" />
+  </EntityType>
+  <Association Name="FK_Good_Type">
+    <End Type="GameShoppingModel.Type" Role="Type" Multiplicity="0..1" />
+    <End Type="GameShoppingModel.Good" Role="Good" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Good">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Good">
+    <End Type="GameShoppingModel.Good" Role="Good" Multiplicity="0..1" />
+    <End Type="GameShoppingModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Good">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="GoodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopCar_Good">
+    <End Type="GameShoppingModel.Good" Role="Good" Multiplicity="0..1" />
+    <End Type="GameShoppingModel.ShopCar" Role="ShopCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Good">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopCar">
+        <PropertyRef Name="GoodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Type="GameShoppingModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="GameShoppingModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

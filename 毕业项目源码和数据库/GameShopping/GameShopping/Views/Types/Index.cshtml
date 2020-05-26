@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{ 
+     var menu = "menu";
+}
+@model List<Models.Type>
+
+
+    <div >
+        @foreach (var item in Model.Where(p => p.PID == null))
+        {
+
+            <p data-toggle="collapse"
+                data-target="#@menu@item.ID">
+                <input type="checkbox" /><span dataValue="@item.ID" onclick="FindChildren(this)">@item.TypeName</span>
+            </p>
+            <div id="@menu@item.ID" class="collapse" style="padding-left:2em;">
+
+            </div>
+        }
+
+    </div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        function FindChildren(a) {
+            var value = $(a).attr("dataValue");
+            
+            $.ajax({
+                type: "post",
+                data: {
+                    "Pid":value
+                },
+                dataType: "JSON",
+                url: "/Types/FindChildren",
+                success: function (data) {
+                    console.log(data);
+                     $("#@menu" + value).html("");
+                    //alert(data.length);
+                    for (var i = 0; i < data.length; i++) {
+                        $("#@menu" + data[i].PID).append("<p data-toggle='collapse' data-target='#@menu" + data[i].ID + "'> <input type='checkbox' /><span dataValue='" + data[i].ID + "' onclick='FindChildren(this)'>" + data[i].TypeName + "</span></p>")
+
+                        $(a).parent().next().append("<div id='@menu" + data[i].ID + "' class='collapse' style='padding-left:2em;' ></div>")
+                    }
+                },
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            })
+        }
+    </script>
+    }
