@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">网点客户管理</li>
+            <li class="breadcrumb-item"><a href="/Site/Index">网点客户信息</a></li>
+            <li class="breadcrumb-item active" aria-current="page">网点添加</li>
+        </ol>
+    </nav>
+<form method="post" action="~/Site/Create">
+    <div>
+        <label> 名称：</label>
+        <input type="text" name="SiteName" id="SiteName" placeholder="请输入网点名称" class="form-control" />
+        <br />
+        <label> 负责人：</label>
+        <input type="text" name="SitePerson" id="SitePerson" placeholder="请输入网点负责人信息" class="form-control" />
+        <br />
+        <label> 联系方式：</label>
+        <input type="text" name="SitePhone" id="SitePhone" placeholder="请输入联系方式" class="form-control" />
+        <br />
+        <label> 地址：</label>
+        <input type="text" name="SiteAddress" id="SiteAddress" placeholder="请输入地址" class="form-control" />
+        <br />
+        <label> 发货类别：</label>
+        <input type="text" name="Site__Category" id="Site__Category" placeholder="请输入货物类别" class="form-control" />
+        <br />
+        <label> 网点要求：</label>
+        <input type="text" name="SiteDeta" id="SiteDeta" placeholder="请输入网点要求" class="form-control" />
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Site/Index">返回</a>
+    </div>
+</form>

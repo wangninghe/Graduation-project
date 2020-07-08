@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Eidt";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using YAConpay.Models;
+@model Goods
+<h2 style="text-align:center">修改支出信息</h2>
+<form method="post" action="~/Goods/Edit">
+    <div>
+        <input type="hidden" name="GoodsId" id="GoodsId" value="@Model.GoodsId" />
+        <label> 物资名称：</label>
+        <input type="text" name="GoodsName" id="GoodsName" value="@Model.GoodsName" class="form-control" />
+        <br />
+        <label> 物资金额：</label>
+        <input type="text" name="GoodsMoney" id="GoodsMoney" value="@Model.GoodsMoney" class="form-control" />
+        <br />
+        <label> 物资详情：</label>
+        <input type="text" name="GoodsDetai" id="GoodsDetai" value="@Model.GoodsDetai" class="form-control" />
+        <br />
+        <label> 购买原因：</label>
+        <input type="text" name="GoodsReason" id="GoodsReason" value="@Model.GoodsReason" class="form-control" />
+        <br />
+        <label> 购买时间：</label>
+        <input type="text" name="GoodsTime" id="GoodsTime" value="@Model.GoodsTime" class="form-control" />
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Goods/Index">返回</a>
+    </div>
+</form>

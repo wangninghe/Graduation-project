@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using YAConpay.Models
+@model Staff
+@{
+    List<Post> post = ViewBag.post;
+    List<Dorm> dorm = ViewBag.dorm;
+}
+<h2 style="text-align:center">员工修改</h2>
+<form method="post" action="~/Staff/Edit">
+    <div>
+        <input type="hidden" name="StaffID" value="@Model.StaffID"/>
+        <label> 员工姓名：</label>
+        <input type="text" name="StaffName" id="StaffName" class="form-control" value="@Model.StaffName" />
+        <br />
+        <label> 员工性别：</label>
+        @if (int.Parse(Model.StaffSex) == 0)
+        {
+            <input type="radio" name="StaffSex" value="0" checked="checked" />@:男
+            <input type="radio" name="StaffSex" value="1" />@:女
+        }
+        else
+        {
+            <input type="radio" name="StaffSex" value="1" checked="checked"/>@:女
+            <input type="radio" name="StaffSex" value="0"  />@:男
+        }
+
+        <br />
+        <label> 员工年龄：</label>
+        <input type="text" name="StaffAge" id="StaffAge" value="@Model.StaffAge" class="form-control" />
+        <br />
+        <label> 员工电话：</label>
+        <input type="text" name="StaffPhone" id="StaffPhone" value="@Model.StaffPhone" class="form-control" />
+        <br />
+        <label> 员工职位：</label>
+        <select name="StaffPost" class="form-control">
+            @foreach (var item in post as List<YAConpay.Models.Post>)
+            {
+                if (Model.StaffPost == item.PostID)
+                {
+                    <option value="@item.PostID" selected="selected">@item.PostName</option>
+                }
+                else
+                {
+                    <option value="@item.PostID" >@item.PostName</option>
+                }
+
+            }
+        </select>
+        <br />
+        <label> 员工宿舍：</label>
+        <select name="StaffDorm" class="form-control">
+            @foreach (var item in dorm as List<YAConpay.Models.Dorm>)
+            {
+                if (Model.StaffDorm == item.DormID)
+                {
+                    <option value="@item.DormID" selected="selected">@item.DormName</option>
+                }
+                else
+                {
+                    <option value="@item.DormID">@item.DormName</option>
+                }
+                
+
+            }
+        </select>
+        <br />
+        <input type="submit" name="" value="修改" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Staff/Index">返回</a>
+    </div>
+</form>
+
+

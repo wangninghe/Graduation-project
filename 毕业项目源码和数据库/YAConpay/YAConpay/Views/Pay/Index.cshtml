@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using PagedList;
+@using YAConpay.Models;
+@{
+    IPagedList<Pay> pays = ViewBag.course;
+    int a = 1;
+}
+<link href="~/Content/css/page.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<h2 style="margin-left:20px">财务支出信息</h2>
+<table class=" table table-bordered " style="text-align:center">
+    <thead class="thead-dark" style="width:100%">
+        <tr style="text-align:center">
+            <th scope="col">序号</th>
+            <th scope="col">支出金额</th>
+            <th scope="col">支出详情</th>
+            <th scope="col">名称</th>
+            <th scope="col">原因</th>
+            <th scope="col">时间</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in pays)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@(a++)</th>
+                <td>@string.Format("{0:C}", item.PaytMoney)</td>
+                <td>
+                    @item.PayDetai
+                </td>
+                <td>@item.PayName</td>
+                <td>@item.PayReason</td>
+                <td>@item.PayTime<br /></td>
+                <td>
+                    <a class="btn btn-secondary" href="/Pay/Datails/@item.PayID">详情</a>
+                    <a class="btn btn-secondary" href="/Pay/Delete/@item.PayID" onclick="return confirm('您确定要删除吗？')">删除</a>
+                    <a class="btn btn-secondary" href="/Pay/Eidt/@item.PayID">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+@model PagedList.IPagedList<YAConpay.Models.Pay>
+@using PagedList.Mvc;
+
+<!-- 分页的主要代码 -->
+<div>
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

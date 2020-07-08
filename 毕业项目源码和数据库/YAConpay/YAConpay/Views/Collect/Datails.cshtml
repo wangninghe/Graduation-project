@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+@using YAConpay.Models
+@model Collect
+<h2 style="text-align:center">收入详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="CollectID" value="@Model.CollectID" />
+        <label> 收入金额：</label>
+        <lable>@Model.CollectMoney</lable>
+        <br />
+        <label> 收入详情：</label>
+        <label>@Model.CollectDetai</label>
+        <br />
+        <label> 付款人：</label>
+        <label>
+            @Model.CollectPerson
+        </label>
+        <br />
+        <label> 联系方式：</label>
+        <label>
+            @Model.CollectPhone
+        </label>
+        <br />
+        <label> 收入时间：</label>
+        <label>
+            @Model.CollectTime
+        </label>
+        <br />
+        <br />
+        <a class="btn btn-secondary" href="/Collect/Eidt/@Model.CollectID">修改</a>
+        <a class="btn btn-secondary" href="/Collect/Index">返回</a>
+    </div>
+</form>

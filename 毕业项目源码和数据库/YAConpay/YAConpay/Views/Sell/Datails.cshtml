@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+@using YAConpay.Models
+@model Sell
+<h2 style="text-align:center">货物详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="WarehouseID" value="@Model.SellID" />
+        <label> 货物名称：</label>
+        <lable>@Model.Warehouse.WarehouseName</lable>
+        <br />
+        <label> 货物数量：</label>
+        <label>@Model.SellNum</label>
+        <br />
+        <label> 货物类型：</label>
+        <label>
+            @Model.SellCategory
+        </label>
+        <br />
+        <label> 货物详情：</label>
+        <label>
+            @Model.SellDetails
+        </label>
+        <br />
+        <a class="btn btn-secondary" href="/Sell/Eidt/@Model.SellID">修改</a>
+        <a class="btn btn-secondary" href="/Sell/Index">返回</a>
+    </div>
+</form>
+

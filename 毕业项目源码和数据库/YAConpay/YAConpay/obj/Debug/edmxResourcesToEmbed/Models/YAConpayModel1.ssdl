@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YACompanyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Buy">
+    <Key>
+      <PropertyRef Name="Buy" />
+    </Key>
+    <Property Name="Buy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseID" Type="int" />
+    <Property Name="BuyTime" Type="datetime" />
+    <Property Name="BuyNum" Type="int" />
+    <Property Name="BuyDetails" Type="nvarchar" MaxLength="50" />
+    <Property Name="BuyCategory" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Collect">
+    <Key>
+      <PropertyRef Name="CollectID" />
+    </Key>
+    <Property Name="CollectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CollectMoney" Type="money" />
+    <Property Name="CollectDetai" Type="nvarchar" MaxLength="50" />
+    <Property Name="CollectTime" Type="datetime" />
+    <Property Name="CollectPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="CollectPhone" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Dorm">
+    <Key>
+      <PropertyRef Name="DormID" />
+    </Key>
+    <Property Name="DormID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DormName" Type="nvarchar" MaxLength="50" />
+    <Property Name="DormDetails" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="GoodsId" />
+    </Key>
+    <Property Name="GoodsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GoodsName" Type="nvarchar" MaxLength="50" />
+    <Property Name="GoodsMoney" Type="money" />
+    <Property Name="GoodsTime" Type="datetime" />
+    <Property Name="GoodsDetai" Type="nvarchar" MaxLength="50" />
+    <Property Name="GoodsReason" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="PWd" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Pay">
+    <Key>
+      <PropertyRef Name="PayID" />
+    </Key>
+    <Property Name="PayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaytMoney" Type="money" />
+    <Property Name="PayDetai" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayTime" Type="datetime" />
+    <Property Name="PayName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PayReason" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostDetails" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sell">
+    <Key>
+      <PropertyRef Name="SellID" />
+    </Key>
+    <Property Name="SellID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseID" Type="int" />
+    <Property Name="SellTime" Type="datetime" />
+    <Property Name="SellNum" Type="int" />
+    <Property Name="SellDetails" Type="nvarchar" MaxLength="50" />
+    <Property Name="SellCategory" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Sendpeople">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffID" Type="int" />
+    <Property Name="SiteID" Type="int" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SitePerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="sitePhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="SiteAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Site&#xD;&#xA;Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="SiteDeta" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffSex" Type="char" MaxLength="2" />
+    <Property Name="StaffAge" Type="int" />
+    <Property Name="StaffPhone" Type="nvarchar" MaxLength="50" />
+    <Property Name="StaffPost" Type="int" />
+    <Property Name="StaffDorm" Type="int" />
+  </EntityType>
+  <EntityType Name="Wages">
+    <Key>
+      <PropertyRef Name="WagesID" />
+    </Key>
+    <Property Name="WagesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostID" Type="int" />
+    <Property Name="Salary" Type="money" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="WarehouseID" />
+    </Key>
+    <Property Name="WarehouseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarehouseName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WarehouseNum" Type="int" />
+    <Property Name="WarehouseDeta" Type="nvarchar" MaxLength="50" />
+    <Property Name="WarehouseCategory" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Buy__WarehouseID__1FCDBCEB">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="Buy">
+        <PropertyRef Name="WarehouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sell__WarehouseI__1CF15040">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="Sell">
+        <PropertyRef Name="WarehouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sendpeopl__Staff__38996AB5">
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+    <End Role="Sendpeople" Type="Self.Sendpeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Sendpeople">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff__StaffDorm__182C9B23">
+    <End Role="Dorm" Type="Self.Dorm" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dorm">
+        <PropertyRef Name="DormID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffDorm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff__StaffPost__173876EA">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Wages__PostID__145C0A3F">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Wages" Type="Self.Wages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Wages">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sendpeople_Site">
+    <End Role="Site" Type="Self.Site" Multiplicity="0..1" />
+    <End Role="Sendpeople" Type="Self.Sendpeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="SiteId" />
+      </Principal>
+      <Dependent Role="Sendpeople">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YACompanyModelStoreContainer">
+    <EntitySet Name="Buy" EntityType="Self.Buy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Collect" EntityType="Self.Collect" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dorm" EntityType="Self.Dorm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pay" EntityType="Self.Pay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sell" EntityType="Self.Sell" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sendpeople" EntityType="Self.Sendpeople" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wages" EntityType="Self.Wages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Buy__WarehouseID__1FCDBCEB" Association="Self.FK__Buy__WarehouseID__1FCDBCEB">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Buy" EntitySet="Buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sell__WarehouseI__1CF15040" Association="Self.FK__Sell__WarehouseI__1CF15040">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Sell" EntitySet="Sell" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sendpeopl__Staff__38996AB5" Association="Self.FK__Sendpeopl__Staff__38996AB5">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Sendpeople" EntitySet="Sendpeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff__StaffDorm__182C9B23" Association="Self.FK__Staff__StaffDorm__182C9B23">
+      <End Role="Dorm" EntitySet="Dorm" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff__StaffPost__173876EA" Association="Self.FK__Staff__StaffPost__173876EA">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Wages__PostID__145C0A3F" Association="Self.FK__Wages__PostID__145C0A3F">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Wages" EntitySet="Wages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sendpeople_Site" Association="Self.FK_Sendpeople_Site">
+      <End Role="Site" EntitySet="Site" />
+      <End Role="Sendpeople" EntitySet="Sendpeople" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

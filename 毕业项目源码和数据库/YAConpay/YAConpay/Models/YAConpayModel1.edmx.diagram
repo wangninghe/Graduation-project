@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="314ca0bbabb64c5498104ad93458c2ae" Name="Diagram1">
+        <EntityTypeShape EntityType="YACompanyModel.Buy" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Collect" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Dorm" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Pay" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Post" Width="1.5" PointX="5.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Sell" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Staff" Width="1.5" PointX="8" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Wages" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="YACompanyModel.Warehouse" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="YACompanyModel.FK__Buy__WarehouseID__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="YACompanyModel.FK__Staff__StaffDorm__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="YACompanyModel.FK__Staff__StaffPost__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="YACompanyModel.FK__Wages__PostID__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="YACompanyModel.FK__Sell__WarehouseI__1DE57479" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="YACompanyModel.Login" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="YACompanyModel.Site" Width="1.5" PointX="6" PointY="8.75" />
+        <EntityTypeShape EntityType="YACompanyModel.Sendpeople" Width="1.5" PointX="10.25" PointY="3.75" />
+        <AssociationConnector Association="YACompanyModel.FK__Sendpeopl__Staff__38996AB5" />
+        <AssociationConnector Association="YACompanyModel.FK_Sendpeople_Site" />
+        <EntityTypeShape EntityType="YACompanyModel.Goods" Width="1.5" PointX="8.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

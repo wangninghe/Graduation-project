@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Eidt";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+@using YAConpay.Models;
+@model Sell
+@{
+    List<Warehouse> Slist = ViewBag.wh;
+}
+<h2 style="text-align:center">出货信息修改</h2>
+<form method="post" action="/Sell/Eidt">
+    <div>
+        <input type="hidden" id="SellID" name="SellID" value="@Model.SellID" />
+        <label> 货物名称：</label>
+        <select name="WarehouseID" class="form-control">
+            @foreach (var item in Slist as List<YAConpay.Models.Warehouse>)
+            {
+                if (Model.WarehouseID == item.WarehouseID)
+                {
+                    <option value="@item.WarehouseID" selected="selected">@item.WarehouseName</option>
+                }
+                else
+                {
+                    <option value="@item.WarehouseID">@item.WarehouseName</option>
+                }
+
+            }
+        </select>
+        <br />
+        <label> 货物数量：</label>
+        <input type="text" name="SellNum" id="SellNum" value="@Model.SellNum" class="form-control" />
+        <br />
+        <label> 货物类型：</label>
+        <input type="text" name="SellCategory" id="SellCategory" value="@Model.SellCategory" class="form-control" />
+        <br />
+        <label> 货物描述：</label>
+        <input type="text" name="SellDetails" id="SellDetails" value="@Model.SellDetails" class="form-control" />
+        <label> 进货时间</label>
+        <input type="text" name="SellTime" id="SellTime" value="@DateTime.Now" class="form-control" />
+        <input type="submit" name="" value="修改" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Sell/Index">返回</a>
+    </div>
+</form>

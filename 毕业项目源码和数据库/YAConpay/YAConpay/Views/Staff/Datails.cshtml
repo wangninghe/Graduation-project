@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+@using YAConpay.Models
+@model Staff
+<h2 style="text-align:center">员工详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="StaffID" value="@Model.StaffID" />
+        <label> 员工姓名：</label>
+        <lable>@Model.StaffName</lable> 
+        <br />
+        <label> 员工性别：</label>
+        <label>
+            @if (int.Parse(Model.StaffSex) == 0)
+            {
+                @:男
+            }
+            else
+            {
+                @:女
+            }
+        </label>
+        <br />
+        <label> 员工年龄：</label>
+        <label>
+            @Model.StaffAge
+        </label>
+            <br />
+            <label> 员工电话：</label>
+            <label>
+                @Model.StaffPhone
+            </label>
+              <br />
+              <label> 员工职位：</label>
+             <label>
+              @Model.Post.PostName
+             </label>
+        <br />
+          <label> 员工宿舍：</label>
+          <label>
+            @Model.Dorm.DormName
+          </label>
+          <br />
+            <a class="btn btn-secondary" href="/Staff/Eidt/@Model.StaffID">修改</a>
+            <a class="btn btn-secondary" href="/Staff/Index">返回</a>
+</div>
+</form>
+
+

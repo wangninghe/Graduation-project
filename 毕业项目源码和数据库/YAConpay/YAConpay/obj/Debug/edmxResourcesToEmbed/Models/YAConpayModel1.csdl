@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YACompanyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Buy">
+    <Key>
+      <PropertyRef Name="Buy1" />
+    </Key>
+    <Property Name="Buy1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarehouseID" Type="Int32" />
+    <Property Name="BuyTime" Type="DateTime" Precision="3" />
+    <Property Name="BuyNum" Type="Int32" />
+    <Property Name="BuyDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK__Buy__WarehouseID__20C1E124" FromRole="Buy" ToRole="Warehouse" />
+    <Property Name="BuyCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Collect">
+    <Key>
+      <PropertyRef Name="CollectID" />
+    </Key>
+    <Property Name="CollectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CollectDetai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CollectTime" Type="DateTime" Precision="3" />
+    <Property Name="CollectPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CollectPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Dorm">
+    <Key>
+      <PropertyRef Name="DormID" />
+    </Key>
+    <Property Name="DormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DormName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DormDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__StaffDorm__15502E78" FromRole="Dorm" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Pay">
+    <Key>
+      <PropertyRef Name="PayID" />
+    </Key>
+    <Property Name="PayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaytMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PayDetai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayTime" Type="DateTime" Precision="3" />
+    <Property Name="PayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PayReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostID" />
+    </Key>
+    <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PostDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__StaffPost__145C0A3F" FromRole="Post" ToRole="Staff" />
+    <NavigationProperty Name="Wages" Relationship="Self.FK__Wages__PostID__1920BF5C" FromRole="Post" ToRole="Wages" />
+  </EntityType>
+  <EntityType Name="Sell">
+    <Key>
+      <PropertyRef Name="SellID" />
+    </Key>
+    <Property Name="SellID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarehouseID" Type="Int32" />
+    <Property Name="SellTime" Type="DateTime" Precision="3" />
+    <Property Name="SellNum" Type="Int32" />
+    <Property Name="SellDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK__Sell__WarehouseI__1DE57479" FromRole="Sell" ToRole="Warehouse" />
+    <Property Name="SellCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaffID" />
+    </Key>
+    <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StaffSex" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="StaffAge" Type="Int32" />
+    <Property Name="StaffPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StaffPost" Type="Int32" />
+    <Property Name="StaffDorm" Type="Int32" />
+    <NavigationProperty Name="Dorm" Relationship="Self.FK__Staff__StaffDorm__15502E78" FromRole="Staff" ToRole="Dorm" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Staff__StaffPost__145C0A3F" FromRole="Staff" ToRole="Post" />
+    <NavigationProperty Name="Sendpeople" Relationship="YACompanyModel.FK__Sendpeopl__Staff__38996AB5" FromRole="Staff" ToRole="Sendpeople" />
+  </EntityType>
+  <EntityType Name="Wages">
+    <Key>
+      <PropertyRef Name="WagesID" />
+    </Key>
+    <Property Name="WagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostID" Type="Int32" />
+    <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Post" Relationship="Self.FK__Wages__PostID__1920BF5C" FromRole="Wages" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="WarehouseID" />
+    </Key>
+    <Property Name="WarehouseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WarehouseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WarehouseNum" Type="Int32" />
+    <Property Name="WarehouseDeta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Buy" Relationship="Self.FK__Buy__WarehouseID__20C1E124" FromRole="Warehouse" ToRole="Buy" />
+    <NavigationProperty Name="Sell" Relationship="Self.FK__Sell__WarehouseI__1DE57479" FromRole="Warehouse" ToRole="Sell" />
+    <Property Name="WarehouseCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__Buy__WarehouseID__20C1E124">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Buy" Type="Self.Buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="Buy">
+        <PropertyRef Name="WarehouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff__StaffDorm__15502E78">
+    <End Role="Dorm" Type="Self.Dorm" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dorm">
+        <PropertyRef Name="DormID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffDorm" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Staff__StaffPost__145C0A3F">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="StaffPost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Wages__PostID__1920BF5C">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Wages" Type="Self.Wages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostID" />
+      </Principal>
+      <Dependent Role="Wages">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sell__WarehouseI__1DE57479">
+    <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="WarehouseID" />
+      </Principal>
+      <Dependent Role="Sell">
+        <PropertyRef Name="WarehouseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="YACompanyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buy" EntityType="Self.Buy" />
+    <EntitySet Name="Collect" EntityType="Self.Collect" />
+    <EntitySet Name="Dorm" EntityType="Self.Dorm" />
+    <EntitySet Name="Pay" EntityType="Self.Pay" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="Sell" EntityType="Self.Sell" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" />
+    <EntitySet Name="Wages" EntityType="Self.Wages" />
+    <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FK__Buy__WarehouseID__20C1E124" Association="Self.FK__Buy__WarehouseID__20C1E124">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Buy" EntitySet="Buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff__StaffDorm__15502E78" Association="Self.FK__Staff__StaffDorm__15502E78">
+      <End Role="Dorm" EntitySet="Dorm" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Staff__StaffPost__145C0A3F" Association="Self.FK__Staff__StaffPost__145C0A3F">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Staff" EntitySet="Staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Wages__PostID__1920BF5C" Association="Self.FK__Wages__PostID__1920BF5C">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Wages" EntitySet="Wages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sell__WarehouseI__1DE57479" Association="Self.FK__Sell__WarehouseI__1DE57479">
+      <End Role="Warehouse" EntitySet="Warehouse" />
+      <End Role="Sell" EntitySet="Sell" />
+    </AssociationSet>
+    <EntitySet Name="Login" EntityType="YACompanyModel.Login" />
+    <EntitySet Name="Site" EntityType="YACompanyModel.Site" />
+    <EntitySet Name="Sendpeople" EntityType="YACompanyModel.Sendpeople" />
+    <AssociationSet Name="FK__Sendpeopl__Staff__38996AB5" Association="YACompanyModel.FK__Sendpeopl__Staff__38996AB5">
+      <End Role="Staff" EntitySet="Staff" />
+      <End Role="Sendpeople" EntitySet="Sendpeople" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sendpeople_Site" Association="YACompanyModel.FK_Sendpeople_Site">
+      <End Role="Site" EntitySet="Site" />
+      <End Role="Sendpeople" EntitySet="Sendpeople" />
+    </AssociationSet>
+    <EntitySet Name="Goods" EntityType="YACompanyModel.Goods" />
+  </EntityContainer>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PWd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Site">
+    <Key>
+      <PropertyRef Name="SiteId" />
+    </Key>
+    <Property Name="SiteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SitePerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sitePhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SiteAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Site__Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SiteDeta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sendpeople" Relationship="YACompanyModel.FK_Sendpeople_Site" FromRole="Site" ToRole="Sendpeople" />
+  </EntityType>
+  <EntityType Name="Sendpeople">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StaffID" Type="Int32" />
+    <Property Name="SiteID" Type="Int32" />
+    <NavigationProperty Name="Staff" Relationship="YACompanyModel.FK__Sendpeopl__Staff__38996AB5" FromRole="Sendpeople" ToRole="Staff" />
+    <NavigationProperty Name="Site" Relationship="YACompanyModel.FK_Sendpeople_Site" FromRole="Sendpeople" ToRole="Site" />
+  </EntityType>
+  <Association Name="FK__Sendpeopl__Staff__38996AB5">
+    <End Type="YACompanyModel.Staff" Role="Staff" Multiplicity="0..1" />
+    <End Type="YACompanyModel.Sendpeople" Role="Sendpeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="StaffID" />
+      </Principal>
+      <Dependent Role="Sendpeople">
+        <PropertyRef Name="StaffID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sendpeople_Site">
+    <End Type="YACompanyModel.Site" Role="Site" Multiplicity="0..1" />
+    <End Type="YACompanyModel.Sendpeople" Role="Sendpeople" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Site">
+        <PropertyRef Name="SiteId" />
+      </Principal>
+      <Dependent Role="Sendpeople">
+        <PropertyRef Name="SiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="GoodsId" />
+    </Key>
+    <Property Name="GoodsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GoodsMoney" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GoodsTime" Type="DateTime" Precision="3" />
+    <Property Name="GoodsDetai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GoodsReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

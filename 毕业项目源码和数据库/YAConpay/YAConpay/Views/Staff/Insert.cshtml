@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using YAConpay.Models
+@{ 
+    List<Post> post = ViewBag.post;
+    List<Dorm> dorm = ViewBag.dorm;
+}
+<h2 style="text-align:center">员工添加</h2>
+<form method="post" action="~/Staff/Insert">
+    <div>
+        <label> 员工姓名：</label>
+        <input type="text" name="StaffName" id="StaffName" placeholder="请输入名字" class="form-control" />
+        <br />
+        <label> 员工性别：</label>
+        <input type="radio" name="StaffSex" value="0" />男
+        <input type="radio" name="StaffSex" value="1" />女
+        <br />
+        <label> 员工年龄：</label>
+        <input type="text" name="StaffAge" id="StaffAge" placeholder="请输入年龄" class="form-control" />
+        <br />
+        <label> 员工电话：</label>
+        <input type="text" name="StaffPhone" id="StaffPhone" placeholder="请输入电话" class="form-control" />
+        <br />
+        <label> 员工职位：</label>
+        <select name="StaffPost" class="form-control">
+            @foreach (var item in post as List<YAConpay.Models.Post>)
+            {
+
+                <option value="@item.PostID">@item.PostName</option>
+
+            }
+        </select>
+        <br />
+        <label> 员工宿舍：</label>
+        <select name="StaffDorm" class="form-control">
+            @foreach (var item in dorm as List<YAConpay.Models.Dorm>)
+            {
+
+                <option value="@item.DormID">@item.DormName</option>
+
+            }
+        </select>
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Staff/Index">返回</a>
+    </div>
+    </form>
+

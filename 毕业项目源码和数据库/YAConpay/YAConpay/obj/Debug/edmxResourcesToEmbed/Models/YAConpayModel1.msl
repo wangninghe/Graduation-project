@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YACompanyModelStoreContainer" CdmEntityContainer="YACompanyEntities">
+    <EntitySetMapping Name="Buy">
+      <EntityTypeMapping TypeName="YACompanyModel.Buy">
+        <MappingFragment StoreEntitySet="Buy">
+          <ScalarProperty Name="BuyCategory" ColumnName="BuyCategory" />
+          <ScalarProperty Name="Buy1" ColumnName="Buy" />
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="BuyTime" ColumnName="BuyTime" />
+          <ScalarProperty Name="BuyNum" ColumnName="BuyNum" />
+          <ScalarProperty Name="BuyDetails" ColumnName="BuyDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collect">
+      <EntityTypeMapping TypeName="YACompanyModel.Collect">
+        <MappingFragment StoreEntitySet="Collect">
+          <ScalarProperty Name="CollectPhone" ColumnName="CollectPhone" />
+          <ScalarProperty Name="CollectPerson" ColumnName="CollectPerson" />
+          <ScalarProperty Name="CollectID" ColumnName="CollectID" />
+          <ScalarProperty Name="CollectMoney" ColumnName="CollectMoney" />
+          <ScalarProperty Name="CollectDetai" ColumnName="CollectDetai" />
+          <ScalarProperty Name="CollectTime" ColumnName="CollectTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dorm">
+      <EntityTypeMapping TypeName="YACompanyModel.Dorm">
+        <MappingFragment StoreEntitySet="Dorm">
+          <ScalarProperty Name="DormID" ColumnName="DormID" />
+          <ScalarProperty Name="DormName" ColumnName="DormName" />
+          <ScalarProperty Name="DormDetails" ColumnName="DormDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pay">
+      <EntityTypeMapping TypeName="YACompanyModel.Pay">
+        <MappingFragment StoreEntitySet="Pay">
+          <ScalarProperty Name="PayReason" ColumnName="PayReason" />
+          <ScalarProperty Name="PayName" ColumnName="PayName" />
+          <ScalarProperty Name="PayID" ColumnName="PayID" />
+          <ScalarProperty Name="PaytMoney" ColumnName="PaytMoney" />
+          <ScalarProperty Name="PayDetai" ColumnName="PayDetai" />
+          <ScalarProperty Name="PayTime" ColumnName="PayTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="YACompanyModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="PostName" ColumnName="PostName" />
+          <ScalarProperty Name="PostDetails" ColumnName="PostDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sell">
+      <EntityTypeMapping TypeName="YACompanyModel.Sell">
+        <MappingFragment StoreEntitySet="Sell">
+          <ScalarProperty Name="SellCategory" ColumnName="SellCategory" />
+          <ScalarProperty Name="SellID" ColumnName="SellID" />
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="SellTime" ColumnName="SellTime" />
+          <ScalarProperty Name="SellNum" ColumnName="SellNum" />
+          <ScalarProperty Name="SellDetails" ColumnName="SellDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="YACompanyModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="StaffSex" ColumnName="StaffSex" />
+          <ScalarProperty Name="StaffAge" ColumnName="StaffAge" />
+          <ScalarProperty Name="StaffPhone" ColumnName="StaffPhone" />
+          <ScalarProperty Name="StaffPost" ColumnName="StaffPost" />
+          <ScalarProperty Name="StaffDorm" ColumnName="StaffDorm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wages">
+      <EntityTypeMapping TypeName="YACompanyModel.Wages">
+        <MappingFragment StoreEntitySet="Wages">
+          <ScalarProperty Name="WagesID" ColumnName="WagesID" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Warehouse">
+      <EntityTypeMapping TypeName="YACompanyModel.Warehouse">
+        <MappingFragment StoreEntitySet="Warehouse">
+          <ScalarProperty Name="WarehouseCategory" ColumnName="WarehouseCategory" />
+          <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+          <ScalarProperty Name="WarehouseName" ColumnName="WarehouseName" />
+          <ScalarProperty Name="WarehouseNum" ColumnName="WarehouseNum" />
+          <ScalarProperty Name="WarehouseDeta" ColumnName="WarehouseDeta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="YACompanyModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="PWd" ColumnName="PWd" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Site">
+      <EntityTypeMapping TypeName="YACompanyModel.Site">
+        <MappingFragment StoreEntitySet="Site">
+          <ScalarProperty Name="SiteDeta" ColumnName="SiteDeta" />
+          <ScalarProperty Name="Site__Category" ColumnName="Site&#xD;&#xA;Category" />
+          <ScalarProperty Name="SiteAddress" ColumnName="SiteAddress" />
+          <ScalarProperty Name="sitePhone" ColumnName="sitePhone" />
+          <ScalarProperty Name="SitePerson" ColumnName="SitePerson" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sendpeople">
+      <EntityTypeMapping TypeName="YACompanyModel.Sendpeople">
+        <MappingFragment StoreEntitySet="Sendpeople">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="YACompanyModel.Goods">
+        <MappingFragment StoreEntitySet="Goods">
+          <ScalarProperty Name="GoodsReason" ColumnName="GoodsReason" />
+          <ScalarProperty Name="GoodsDetai" ColumnName="GoodsDetai" />
+          <ScalarProperty Name="GoodsTime" ColumnName="GoodsTime" />
+          <ScalarProperty Name="GoodsMoney" ColumnName="GoodsMoney" />
+          <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+          <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

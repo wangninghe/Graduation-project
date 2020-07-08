@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+<h2 style="text-align:center">购买物资</h2>
+<form method="post" action="~/Goods/Create">
+    <div>
+        <label> 物资名称：</label>
+        <input type="text" name="GoodsName" id="GoodsName" placeholder="请输入物资名称" class="form-control" />
+        <br />
+        <label> 物资金额：</label>
+        <input type="text" name="GoodsMoney" id="GoodsMoney" placeholder="请输入物资金额" class="form-control" />
+        <br />
+        <label> 物资详情：</label>
+        <input type="text" name="GoodsDetai" id="GoodsDetai" placeholder="请输入物资详情" class="form-control" />
+        <br />
+        <label> 购买原因：</label>
+        <input type="text" name="GoodsReason" id="GoodsReason" placeholder="请输入购买原因" class="form-control" />
+        <br />
+        <label> 购买时间：</label>
+        <input type="text" name="GoodsTime" id="GoodsTime" value="@DateTime.Now" class="form-control" />
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Goons/Index">返回</a>
+    </div>
+</form>
