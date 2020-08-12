@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@{
+    int num = 0;
+    int num1 = 0;
+}
+@using PagedList;
+@using YAConpay.Models;
+@{
+    IPagedList<Warehouse > warehouses = ViewBag.course;
+    int a = 1;
+}
+<link href="~/Content/css/page.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<h2 style="margin-left:20px">库存信息</h2>
+<table class=" table table-bordered " style="text-align:center">
+    <thead class="thead-dark" style="width:100%">
+        <tr style="text-align:center">
+            <th scope="col">序号</th>
+            <th scope="col">货物名称</th>
+            <th scope="col">货物数量</th>
+            <th scope="col">货物类型</th>
+            <th scope="col">货物描述</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in warehouses)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@(a++)</th>
+                <td>@item.WarehouseName</td>
+                <td>
+                    @foreach (var item1 in item.Sell)
+                    {
+                        if (item.WarehouseID == item1.WarehouseID)
+                        {
+                            num += item1.SellNum ?? 0;
+                        }
+                    }
+                    @foreach (var item1 in item.Buy)
+                    {
+                        if (item.WarehouseID == item1.WarehouseID)
+                        {
+                            num1 += item1.BuyNum ?? 0;
+                        }
+                    }
+                    @(item.WarehouseNum - num + num1)
+                    @{
+                        num = 0;
+                        num1 = 0;
+                    }
+                </td>
+                <td>@item.WarehouseCategory</td>
+                <td>@item.WarehouseDeta</td>
+                <td>
+                    <a class="btn btn-secondary" href="/Warehouse/Datails/@item.WarehouseID">详情</a>
+                    <a class="btn btn-secondary" href="/Warehouse/Delete/@item.WarehouseID" onclick="return confirm('您确定要删除吗？')">删除</a>
+                    <a class="btn btn-secondary" href="/Warehouse/Eidt/@item.WarehouseID">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+@model PagedList.IPagedList<YAConpay.Models.Warehouse>
+@using PagedList.Mvc;
+
+<!-- 分页的主要代码 -->
+<div>
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

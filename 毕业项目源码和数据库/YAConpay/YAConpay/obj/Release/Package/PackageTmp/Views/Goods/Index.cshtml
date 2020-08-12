@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using PagedList;
+@using YAConpay.Models;
+@{
+    IPagedList<Goods> goods = ViewBag.course;
+    int a = 1;
+}
+<link href="~/Content/css/page.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<h2 style="margin-left:20px">物资信息</h2>
+<table class=" table table-bordered " style="text-align:center">
+    <thead class="thead-dark" style="width:100%">
+        <tr style="text-align:center">
+            <th scope="col">序号</th>
+            <th scope="col">物资名称</th>
+            <th scope="col">物资金额</th>
+            <th scope="col">物资详情</th>
+            <th scope="col">购买原因</th>
+            <th scope="col">购买时间</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in goods)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@(a++)</th>
+                <td>@item.GoodsName</td>
+                <td>
+                    @string.Format("{0:C}", item.GoodsMoney)
+                </td>
+                <td>@item.GoodsDetai</td>
+                <td>@item.GoodsReason</td>
+                <td>@item.GoodsTime<br /></td>
+                <td>
+                    <a class="btn btn-secondary" href="/Goods/Datails/@item.GoodsId">详情</a>
+                    <a class="btn btn-secondary" href="/Goods/Delete/@item.GoodsId" onclick="return confirm('您确定要删除吗？')">删除</a>
+                    <a class="btn btn-secondary" href="/Goods/Eidt/@item.GoodsId">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+@model PagedList.IPagedList<YAConpay.Models.Goods>
+@using PagedList.Mvc;
+
+<!-- 分页的主要代码 -->
+<div>
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

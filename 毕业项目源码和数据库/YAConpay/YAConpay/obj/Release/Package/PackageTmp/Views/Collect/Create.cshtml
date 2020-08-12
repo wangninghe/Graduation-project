@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+<h2 style="text-align:center">添加收入</h2>
+<form method="post" action="~/Collect/Create">
+    <div>
+        <label> 收入金额：</label>
+        <input type="text" name="CollectMoney" id="CollectMoney" placeholder="请输入收入金额" class="form-control" />
+        <br />
+        <label> 收入详情：</label>
+        <input type="text" name="CollectDetai" id="CollectDetai" placeholder="请输入收入详情" class="form-control" />
+        <br />
+        <label> 付款人：</label>
+        <input type="text" name="CollectPerson" id="CollectPerson" placeholder="请输入付款人" class="form-control" />
+        <br />
+        <label> 联系方式：</label>
+        <input type="text" name="CollectPhone" id="CollectPhone" placeholder="请输入联系方式" class="form-control" />
+        <br />
+        <label> 收入时间：</label>
+        <input type="text" name="CollectTime" id="CollectTime" value="@DateTime.Now" class="form-control" />
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Collect/Index">返回</a>
+    </div>
+</form>

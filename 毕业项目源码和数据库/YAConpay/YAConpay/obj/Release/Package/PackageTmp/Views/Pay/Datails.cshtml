@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using YAConpay.Models
+@model Pay
+<h2 style="text-align:center">支出详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="PayID" value="@Model.PayID" />
+        <label> 支出金额：</label>
+        <lable>@Model.PaytMoney</lable>
+        <br />
+        <label> 支出详情：</label>
+        <label>@Model.PayDetai</label>
+        <br />
+        <label> 名称：</label>
+        <label>
+            @Model.PayName
+        </label>
+        <br />
+        <label> 支出原因：</label>
+        <label>
+            @Model.PayReason
+        </label>
+        <br />
+        <label> 支出时间：</label>
+        <label>
+            @Model.PayTime
+        </label>
+        <br />
+        <br />
+        <a class="btn btn-secondary" href="/Pay/Eidt/@Model.PayID">修改</a>
+        <a class="btn btn-secondary" href="/Pay/Index">返回</a>
+    </div>
+</form>

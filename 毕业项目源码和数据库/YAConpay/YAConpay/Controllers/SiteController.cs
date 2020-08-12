@@ -41,6 +41,12 @@ namespace YAConpay.Controllers
         }
         public ActionResult Delete(int ID)
         {
+            var Send = db.Sendpeople.Where(p => p.SiteID == ID).ToList();
+            foreach (var item in Send)
+            {
+                db.Sendpeople.Remove(item);
+                db.SaveChanges();
+            }
             var site = db.Site.Find(ID);
             db.Site.Remove(site);
             db.SaveChanges();

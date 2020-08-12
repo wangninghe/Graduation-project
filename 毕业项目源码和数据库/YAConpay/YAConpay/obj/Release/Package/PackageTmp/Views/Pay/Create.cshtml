@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+<h2 style="text-align:center">添加收入</h2>
+<form method="post" action="~/Pay/Create">
+    <div>
+        <label> 支出金额：</label>
+        <input type="text" name="PaytMoney" id="PaytMoney" placeholder="请输入支出金额" class="form-control" />
+        <br />
+        <label> 支出详情：</label>
+        <input type="text" name="PayDetai" id="PayDetai" placeholder="请输入支出详情" class="form-control" />
+        <br />
+        <label> 名称：</label>
+        <input type="text" name="PayName" id="PayName" placeholder="请输入名称" class="form-control" />
+        <br />
+        <label> 原因：</label>
+        <input type="text" name="PayReason" id="PayReason" placeholder="请输入原因" class="form-control" />
+        <br />
+        <label> 时间：</label>
+        <input type="text" name="PayTime" id="PayTime" value="@DateTime.Now" class="form-control" />
+        <br />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Pay/Index">返回</a>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using PagedList;
+@using YAConpay.Models;
+@{
+    IPagedList<Collect> collects = ViewBag.course;
+    int a = 1;
+}
+<link href="~/Content/css/page.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<h2 style="margin-left:20px">财务收入信息</h2>
+<table class=" table table-bordered " style="text-align:center">
+    <thead class="thead-dark" style="width:100%">
+        <tr style="text-align:center">
+            <th scope="col">序号</th>
+            <th scope="col">收入金额</th>
+            <th scope="col">收入详情</th>
+            <th scope="col">付款人</th>
+            <th scope="col">付款人联系方式</th>
+            <th scope="col">收入时间</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in collects)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@(a++)</th>
+                <td>@string.Format("{0:C}", item.CollectMoney)</td>
+                <td>
+                    @item.CollectDetai
+                </td>
+                <td>@item.CollectPerson</td>
+                <td>@item.CollectPhone</td>
+                <td>@item.CollectTime<br /></td>
+                <td>
+                    <a class="btn btn-secondary" href="/Collect/Datails/@item.CollectID">详情</a>
+                    <a class="btn btn-secondary" href="/Collect/Delete/@item.CollectID" onclick="return confirm('您确定要删除吗？')">删除</a>
+                    <a class="btn btn-secondary" href="/Collect/Eidt/@item.CollectID">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+@model PagedList.IPagedList<YAConpay.Models.Collect>
+@using PagedList.Mvc;
+
+<!-- 分页的主要代码 -->
+<div>
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

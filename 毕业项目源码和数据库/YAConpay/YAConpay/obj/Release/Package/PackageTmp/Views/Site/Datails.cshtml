@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+
+@using YAConpay.Models
+@model Site
+<h2 style="text-align:center">网点详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="SiteID" value="@Model.SiteId" />
+        <label> 网点名称：</label>
+        <lable>@Model.SiteName</lable>
+        <br />
+        <label> 负责人：</label>
+        <label>@Model.SitePerson</label>
+        <br />
+        <label> 联系方式：</label>
+        <label>
+            @Model.sitePhone
+        </label>
+        <br />
+        <label> 地址：</label>
+        <label>
+            @Model.SiteAddress
+        </label>
+        <br />
+        <label> 货物类别：</label>
+        <label>
+            @Model.Site__Category
+        </label>
+        <br />
+        <label> 网点要求：</label>
+        <label>
+            @Model.SiteDeta
+        </label>
+        <br />
+        <a class="btn btn-secondary" href="/Site/Eidt/@Model.SiteId">修改</a>
+        <a class="btn btn-secondary" href="/Site/Index">返回</a>
+    </div>
+</form>

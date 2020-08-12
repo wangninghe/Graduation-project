@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Eidt";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using YAConpay.Models;
+@model Warehouse
+@{
+    int num = 0;
+    int num1 = 0;
+    foreach (var item in Model.Sell)
+    {
+        if (item.WarehouseID == Model.WarehouseID)
+        {
+            num += item.SellNum ?? 0;
+        }
+    }
+    foreach (var item in Model.Buy)
+    {
+        if (item.WarehouseID == Model.WarehouseID)
+        {
+            num1 += item.BuyNum ?? 0;
+        }
+    }
+    int num3 = Model.WarehouseNum - num + num1??0;
+}
+<h2 style="text-align:center">货物修改</h2>
+<form method="post" action="/Warehouse/Eidt">
+    <div>
+        <input type="hidden" id="WarehouseID" name="WarehouseID" value="@Model.WarehouseID" />
+        <label> 货物名称：</label>
+        <input type="text" name="WarehouseName" id="WarehouseName" value="@Model.WarehouseName" class="form-control" />
+        <br />
+        <label> 货物数量：</label>
+        <input type="text" name="WarehouseNum" id="WarehouseNum"value="@num3 " class="form-control" />
+        <br />
+        <label> 货物类型：</label>
+        <input type="text" name="WarehouseCategory" id="WarehouseCategory" value="@Model.WarehouseCategory" class="form-control" />
+        <br />
+        <label> 货物描述：</label>
+        <input type="text" name="WarehouseDeta" id="WarehouseDeta" value="@Model.WarehouseDeta" class="form-control" />
+        <input type="submit" name="" value="修改" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Warehouse/Index">返回</a>
+    </div>
+</form>

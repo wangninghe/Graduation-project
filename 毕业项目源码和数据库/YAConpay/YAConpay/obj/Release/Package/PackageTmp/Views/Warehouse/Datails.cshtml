@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Datails";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@{
+
+    int num = 0;
+    int num1 = 0;
+}
+@using YAConpay.Models
+@model Warehouse
+<h2 style="text-align:center">货物详情</h2>
+<form>
+    <div>
+        <input type="hidden" name="WarehouseID" value="@Model.WarehouseID" />
+        <label> 货物名称：</label>
+        <lable>@Model.WarehouseName</lable>
+        <br />
+        <label> 货物数量：</label>
+        <label>
+            @foreach (var item in Model.Sell)
+            {
+                if (item.WarehouseID == Model.WarehouseID)
+                {
+                    num += item.SellNum ?? 0;
+                }
+            }
+            @foreach (var item in Model.Buy)
+            {
+                if (item.WarehouseID == Model.WarehouseID)
+                {
+                    num1 += item.BuyNum ?? 0;
+                }
+            }
+            @(Model.WarehouseNum - num + num1)
+            @{
+                num = 0;
+                num1 = 0;
+            }
+        </label>
+        <br />
+        <label> 货物类型：</label>
+        <label>
+            @Model.WarehouseCategory
+        </label>
+        <br />
+        <label> 货物详情：</label>
+        <label>
+            @Model.WarehouseDeta
+        </label>
+        <br />
+        <a class="btn btn-secondary" href="/Warehouse/Eidt/@Model.WarehouseID">修改</a>
+        <a class="btn btn-secondary" href="/Warehouse/Index">返回</a>
+    </div>
+</form>

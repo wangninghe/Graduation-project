@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+@using PagedList;
+@using YAConpay.Models;
+@{
+    IPagedList<Site> site = ViewBag.course;
+    int a = 1;
+    List<Staff> slist = ViewBag.Staff;
+}
+<link href="~/Content/css/page.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">网点管理</li>
+        <li class="breadcrumb-item active" aria-current="page">网点客户信息</li>
+    </ol>
+</nav>
+<table class=" table table-bordered " style="text-align:center">
+    <thead class="thead-dark" style="width:100%">
+        <tr style="text-align:center">
+            <th scope="col">序号</th>
+            <th scope="col">名称</th>
+            <th scope="col">负责人</th>
+            <th scope="col">联系方式</th>
+            <th scope="col">地址</th>
+            <th scope="col">派去员工</th>
+            <th scope="col">发货类别</th>
+            <th scope="col">网点要求</th>
+            <th scope="col">操作</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in site)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@(a++)</th>
+                <td>@item.SiteName</td>
+                <td>
+                    @item.SitePerson
+                </td>
+                <td>@item.sitePhone</td>
+                <td>@item.SiteAddress</td>
+                <td>
+                    @foreach (var item1 in item.Sendpeople.ToList())
+                    {
+                        @item1.Staff.StaffName<br />
+                    }
+                </td>
+                <td>
+                    @item.Site__Category
+                </td>
+                <td>
+                    @item.SiteDeta
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal" data-ygid="@item.SiteId" >
+                        选择员工
+                    </button>
+                    <a class="btn btn-secondary" href="/Site/Datails/@item.SiteId">详情</a>
+                    <a class="btn btn-secondary" href="/Site/Delete/@item.SiteId" onclick="return confirm('您确定要删除吗？')">删除</a>
+                    <a class="btn btn-secondary" href="/Site/Eidt/@item.SiteId">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+
+@model PagedList.IPagedList<YAConpay.Models.Site>
+@using PagedList.Mvc;
+
+<!-- 分页的主要代码 -->
+<div>
+    每页 @Model.PageSize 条记录，共 @Model.PageCount 页，当前第 @Model.PageNumber 页
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">选择员工</h4>
+            </div>
+            <form id="form1" method="post" @*action="/Site/Send"*@>
+                <input type="hidden" name="SiteId" value="" id="SiteId_1" />
+                <div class="modal-body">
+                    @foreach (var item in slist)
+                    {
+                        <input type="checkbox" value="@item.StaffID" name="StaffID" class="StaffID" />@item.StaffName<br />                    
+                     }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                    <button type="button" class="btn btn-primary" onclick="nbclass()">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        //$('.close').click(function () {
+        //    $('.StaffID').attr("checked", false);
+        //})
+        function nbclass() {
+            $.ajax({
+                type: "post",
+                url: "/Site/Ajsx",
+                data: $("#form1").serialize(),
+                success: (msg) => {
+                    //window.parent.close();
+                    location.reload();
+                }
+            })
+
+
+            //$('form1').submit()
+        }
+        $('#myModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var ygid = button.data('ygid');
+            $("#SiteId_1").val(ygid);
+            var modal = $(this)            
+            $.post({
+                url: "/Site/SelectAjax",
+                data: { Rid: ygid },
+                success: function (data) {
+                    $(".StaffID").prop("checked", false);
+                    
+                    $('.StaffID').each(function () {
+                        
+                        var id = $(this).val();
+                        for (var i = 0; i < data.length; i++) {
+                            
+                            if (id == data[i]) {
+                                $(this).prop("checked", true);
+                            }
+                        }
+
+                    })
+                },
+                error: function () {
+                    alert('错误！')
+                }
+
+            })
+        })
+    </script>
+}

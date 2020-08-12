@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+}
+<h2 style="text-align:center">货物添加</h2>
+<form method="post" action="~/Warehouse/Create">
+    <div>
+        <label> 货物名称：</label>
+        <input type="text" name="WarehouseName" id="WarehouseName" placeholder="请输入货物名称" class="form-control" />
+        <br />
+        <label> 货物数量：</label>
+        <input type="text" name="WarehouseNum" id="WarehouseNum" placeholder="请输入货物数量" class="form-control" />
+        <br />
+        <label> 货物类型：</label>
+        <input type="text" name="WarehouseCategory" id="WarehouseCategory" placeholder="请输入货物类型" class="form-control" />
+        <br />
+        <label> 货物描述：</label>
+        <input type="text" name="WarehouseDeta" id="WarehouseDeta" placeholder="请输入货物描述" class="form-control" />
+        <input type="submit" name="" value="添加" class="btn btn-lg btn-primary">
+        <a class="btn btn-secondary" href="/Warehouse/Index">返回</a>
+    </div>
+</form>

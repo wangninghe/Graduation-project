@@ -221,6 +221,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\18201281_214432763000_2.jpg" />
+    <Content Include="images\7759243_090929075000_2.jpg" />
     <Content Include="images\demo-1-bg.jpg" />
     <Content Include="images\login_ico.png" />
     <Content Include="images\mini.png" />
@@ -269,6 +271,8 @@
     <Content Include="Models\YAConpayModel1.edmx.diagram">
       <DependentUpon>YAConpayModel1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\6个月.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\iconfont.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
